@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
+
     }
 
     public void onClick(View view) {
@@ -87,19 +89,25 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button_equal:
                 String first = textView.getText().toString().replace(parameter1 + operation + "", "");
                 parameter2 = Integer.valueOf(first);
+
                 switch (operation) {
                     case "+":
                         textView.setText(parameter1 + " + " + parameter2 + " = " + (parameter1 + parameter2));
                         break;
                     case "-":
+
                         textView.setText(parameter1 + " - " + parameter2 + " = " + (parameter1 - parameter2));
                         break;
                     case "*":
+
                         textView.setText(parameter1 + "*" + parameter2 + " = " + (parameter1 * parameter2));
                         break;
                     case "/":
+
                         textView.setText(parameter1 + "/" + parameter2 + " = " + (parameter1 / parameter2));
+                        saveInt();
                         break;
+
                 }
                 break;
             case R.id.button_clear:
@@ -108,4 +116,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    public void saveInt( ){
+        String text_result = textView.getText().toString();
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("Key",text_result);
+        startActivityForResult(intent,9);
+    }
+
 }
