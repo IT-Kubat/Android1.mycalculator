@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     int parameter2;
     String operation;
 
+    public static final String KEY = "KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,9 +108,11 @@ public class MainActivity extends AppCompatActivity {
                         textView.setText(parameter1 + "/" + parameter2 + " = " + (parameter1 / parameter2));
                         saveInt();
                         break;
-
                 }
+
+
                 break;
+
             case R.id.button_clear:
                 textView.setText("");
                 break;
@@ -118,9 +121,14 @@ public class MainActivity extends AppCompatActivity {
     }
     public void saveInt( ){
         String text_result = textView.getText().toString();
-        Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra("Key",text_result);
-        startActivityForResult(intent,9);
+        Intent intent =new Intent();
+        setResult(RESULT_OK,intent);
+        intent.putExtra("key",text_result);
+        finish();
     }
 
+
+    public void send(View view) {
+        saveInt();
+    }
 }

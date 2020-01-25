@@ -82,8 +82,8 @@
         android:id="@+id/buttom_doubleZero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00"
-        android:onClick="onClick"
+        android:text="sned"
+        android:onClick="send"
         android:textSize="@dimen/textSize"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -184,6 +184,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttom_doubleZero" />
 
+
+
+
     <Button
         android:id="@+id/button_multiply"
         android:layout_width="wrap_content"
@@ -194,6 +197,9 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_equal"
         app:layout_constraintLeft_toRightOf="@id/button_clear"/>
+
+
+
 
 
 

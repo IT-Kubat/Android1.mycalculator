@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,12 +20,16 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void Calculator(View view) {
-        startActivity(new Intent(this,MainActivity.class));
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivityForResult(intent, 42);
+
     }
 
-    public void Result(View view) {
-        Intent intent = getIntent();
-        String getInt = intent.getStringExtra("Key");
-        textView.setText(getInt);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 42 && resultCode == RESULT_OK && data != null) ;
+        String res = data.getStringExtra("key");
+        textView.setText(res);
     }
 }
